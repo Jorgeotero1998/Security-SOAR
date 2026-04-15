@@ -3,6 +3,12 @@
 ## 🎯 Strategic Overview
 **Security-SOAR** is a production-ready automation engine designed to eliminate the time gap between **Detection** and **Response**. By integrating Global Threat Intelligence (VirusTotal) with OS-level telemetry, this system executes high-fidelity containment protocols autonomously.
 
+## Screenshots
+<img width="1912" height="1018" alt="1" src="https://github.com/user-attachments/assets/5346c7e6-9dc8-4340-bc09-9b062d1b0a3d" />
+<img width="1912" height="976" alt="2" src="https://github.com/user-attachments/assets/91432955-1805-4f3f-9b48-83eff9caa464" />
+
+
+
 ## 🛠️ Advanced Features
 - **Heuristic-Based Analysis**: Queries multi-engine threat intelligence to validate alerts.
 - **Process Quarantining**: Real-time suspension of malicious PIDs to halt Ransomware execution or data exfiltration.
