@@ -1,0 +1,1 @@
+﻿version: "3.8"`nservices:`n  soar-engine:`n    build: .`n    volumes:`n      - .:/app`n    environment:`n      - VT_API_KEY=${VT_API_KEY}`n      - TG_TOKEN=${TG_TOKEN}`n      - TG_CHAT_ID=${TG_CHAT_ID}
