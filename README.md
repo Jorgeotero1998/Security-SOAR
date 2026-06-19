@@ -1,42 +1,38 @@
-﻿# Security-SOAR: Intelligence-Driven Incident Response 🐍🛡️
+# Security-SOAR 🐍🛡️
+> Intelligence-Driven Incident Response & Security Telemetry Orchestration Engine.
 
-## 🎯 Strategic Overview
-**Security-SOAR** is a production-ready automation engine designed to eliminate the time gap between **Detection** and **Response**. By integrating Global Threat Intelligence (VirusTotal) with OS-level telemetry, this system executes high-fidelity containment protocols autonomously.
-
-## Screenshots
-<img width="1912" height="1018" alt="1" src="https://github.com/user-attachments/assets/5346c7e6-9dc8-4340-bc09-9b062d1b0a3d" />
-<img width="1912" height="976" alt="2" src="https://github.com/user-attachments/assets/91432955-1805-4f3f-9b48-83eff9caa464" />
-
-
-
-## 🛠️ Advanced Features
-- **Heuristic-Based Analysis**: Queries multi-engine threat intelligence to validate alerts.
-- **Process Quarantining**: Real-time suspension of malicious PIDs to halt Ransomware execution or data exfiltration.
-- **Resilient Pipeline**: Implements session persistence and robust exception handling.
-- **Audit Logging**: Generates a detailed soar_execution.log for post-mortem forensic analysis.
-
-## ⚙️ Core Workflow
-This engine acts as the central intelligence of a security ecosystem:
-
-1. **Telemetry Ingestion**: Consumes JSON-structured events from detection agents like **[SentinelSoc](https://github.com/Jorgeotero1998/SentinelSoc)**.
-2. **Context Enrichment**: Performs automated lookups of file reputations using the VirusTotal API.
-3. **Automated Remediation**: If threat thresholds are met (>3 malicious engines), the engine isolates the offending process at the OS level.
-4. **Instant Notification**: Direct alerts to the SOC team via Telegram Bot API with full incident context.
-
-## 🚀 Deployment & Requirements
-Ensure you have the required dependencies installed:
-`pip install requests psutil`
-
-### Environment Variables
-For security best practices, this project uses environment variables:
-- `VT_API_KEY`: Your VirusTotal API Key.
-- `TG_TOKEN`: Your Telegram Bot Token.
-- `TG_CHAT_ID`: Your personal or group Chat ID.
-
-## 📈 Business Impact
-- **Reduced MTTR**: Decreases the Mean Time to Respond from minutes to milliseconds.
-- **Improved Accuracy**: Filters false positives by cross-referencing global threat databases.
-- **Operational Efficiency**: Automates Tier 1 incident response tasks.
+Security-SOAR is a production-ready Security Orchestration, Automation, and Response (SOAR) engine designed to eliminate the time gap between detection and mitigation. By integrating Global Threat Intelligence with OS-level telemetry, this system ingests security alerts, enriches context, and executes high-fidelity containment protocols autonomously.
 
 ---
-*Developed by Jorge Otero - Full Stack & Security Automation Engineer.*
+
+## ⚙️ Core Workflow & Architecture
+
+The engine acts as the central intelligence of a distributed security ecosystem, operating through a deterministic pipeline:
+
+1. **Telemetry Ingestion:** Consumes structured JSON events from endpoint detection agents (such as `SentinelSoc`).
+2. **Context Enrichment:** Performs automated hash and file reputation lookups using the VirusTotal API.
+3. **Automated Remediation:** If threat thresholds are met (>3 malicious engine detections), the engine isolates the offending process at the OS level using native process signals.
+4. **Instant Notification:** Dispatches real-time incident alerts to SecOps teams via the Telegram Bot API with full forensic context.
+
+---
+
+## 🚀 Key Technical Features
+
+* **Multi-Engine Heuristic Validation:** Asynchronous integration with global threat intelligence databases to cross-reference and validate security events.
+* **OS-Level Process Quarantining:** Real-time suspension and termination of malicious Process IDs (PIDs) via `psutil` to instantly halt ransomware propagation or data exfiltration.
+* **Production-Ready Resilience:** Built-in session persistence, backoff mechanisms for API rate limits, and comprehensive exception handling.
+* **Forensic Audit Logging:** Generates structured execution logs (`soar_execution.log`) ensuring full traceability for post-mortem analysis and compliance.
+* **Containerized Deployment:** Native Docker and Docker Compose support for isolated, scalable infrastructure deployment.
+
+---
+
+## 📁 Project Structure
+
+```text
+Security-SOAR/
+├── orchestrator.py        # Core orchestration engine and pipeline logic
+├── sentinel_alerts.json   # Sample endpoint telemetry data for integration testing
+├── Dockerfile             # Multi-stage build containerization file
+├── docker-compose.yml     # Multi-container service orchestration spec
+├── .env.example           # Infrastructure configuration template
+└── requirements.txt       # Production execution dependencies
